@@ -1,43 +1,65 @@
 import {HttpStatus, Injectable} from "@nestjs/common";
 import {DatasourceService} from "../datasource/datasource.service";
 import {Cars} from "./cars.entity";
+import {InjectRepository} from "@nestjs/typeorm";
+import {Repository} from "typeorm";
+import {Cars_services} from "../cars_services/cars_services.entity";
+import {CreateCarDto} from "./dto/CarDTO";
+import {IncompleteCarDto} from "./dto/incomplete-car.dto";
 
 @Injectable()
 export class CarsService
 {
-    constructor(private readonly datasourceService: DatasourceService)
+    constructor(@InjectRepository(Cars)
+    private readonly carRepository: Repository<Cars>,
+    @InjectRepository(Cars_services)
+    private readonly cars_servicesRepository: Repository<Cars_services>,)
     {
 
     }
-    create(car: Cars)
+    async create(carDto: CreateCarDto): Promise<Cars>
     {
-        this.datasourceService.getCars().push(car);
+        const car = this.carRepository.create();
+        car.id = carDto.id;
+        car.carname = carDto.carname;
+        car.manufacturer = carDto.manufacturer;
+        await this.carRepository.save(car);
         return car;
     }
-    findOne(id:number)
+    findOne(id:number): Promise<Cars>
     {
-        return this.datasourceService
-            .getCars()
-            .find((car) => car.id === id);
+        return this.carRepository.findOne({
+            where: {id},
+        })
     }
-    findAll() : Cars[]
+    async findAll() : Promise<Cars[]>
     {
-        return this.datasourceService.getCars();
+        const cars = await this.carRepository.find({
+
+        })
+        return cars;
     }
-    update(id: number, updatedCar: Cars)
+    async update(id: number, updatedCar: Cars)
     {
-        const index = this.datasourceService
-            .getCars()
-            .findIndex((car) => car.id === id);
-        this.datasourceService.getCars()[index] = updatedCar;
-        return this.datasourceService.getCars()[index];
+        const car = await this.carRepository.findOne({where:{id}});
+        car.carname = updatedCar.carname;
+        car.manufacturer = updatedCar.manufacturer;
+        await this.carRepository.save(car);
+        return car;
     }
     remove(id: number)
     {
-        const index = this.datasourceService
-            .getCars()
-            .findIndex((car) => car.id === id);
-        this.datasourceService.getCars().splice(index, 1);
-        return HttpStatus.OK;
+        this.carRepository.delete({id});
+    }
+
+    async findIncomplete(): Promise<IncompleteCarDto[]> {
+        const cars = await this.carRepository.find();
+        const incompleteCars : IncompleteCarDto[] = cars.map((car) => {
+            const incompleteCar = new IncompleteCarDto();
+            incompleteCar.id = car.id ;
+            incompleteCar.carname = car.carname;
+            return incompleteCar;
+        });
+        return incompleteCars;
     }
 }

@@ -1,42 +1,49 @@
 import {HttpStatus, Injectable} from "@nestjs/common";
 import {DatasourceService} from "../datasource/datasource.service";
 import {Workers} from "./workers.entity";
+import {InjectRepository} from "@nestjs/typeorm";
+import {Repository} from "typeorm";
+import {CreateWorkerDto} from "./dto/WorkerDTO";
 
 @Injectable()
 export class WorkersService
 {
-    constructor(private readonly datasourceService: DatasourceService)
+    constructor(@InjectRepository(Workers)
+    private readonly workerRepository: Repository<Workers>)
     {
     }
-    create(worker: Workers)
+    async create(workerDto: CreateWorkerDto): Promise<Workers>
     {
-        this.datasourceService.getWorkers().push(worker);
-        return worker
+        const worker = this.workerRepository.create();
+        worker.id = workerDto.id;
+        worker.fullname = workerDto.fullname;
+        worker.position = workerDto.position;
+        worker.phone = workerDto.phone;
+        await this.workerRepository.save(worker);
+        return worker;
     }
-    findOne(id: number)
+    findOne(id: number): Promise<Workers>
     {
-        return this.datasourceService
-            .getWorkers()
-            .find((worker) => worker.id === id);
+        return this.workerRepository.findOne({
+            where: {id},
+        })
     }
-    findAll(): Workers[]
+    async findAll(): Promise<Workers[]>
     {
-        return this.datasourceService.getWorkers();
+        const workers = await this.workerRepository.find({})
+        return workers;
     }
-    update(id: number, updatedWorker: Workers)
+    async update(id: number, updatedWorker: Workers)
     {
-        const index = this.datasourceService
-            .getWorkers()
-            .findIndex((worker) => worker.id === id);
-        this.datasourceService.getWorkers()[index] = updatedWorker;
-        return this.datasourceService.getWorkers()[index];
+        const worker = await this.workerRepository.findOne({where:{id}});
+        worker.fullname = updatedWorker.fullname;
+        worker.position = updatedWorker.position;
+        worker.phone = updatedWorker.phone;
+        await this.workerRepository.save(worker);
+        return worker;
     }
     remove(id: number)
     {
-        const index = this.datasourceService
-            .getWorkers()
-            .findIndex((worker) => worker.id === id);
-        this.datasourceService.getWorkers().splice(index,1);
-        return HttpStatus.OK;
+        this.workerRepository.delete({id});
     }
 }

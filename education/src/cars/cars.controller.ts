@@ -32,6 +32,11 @@ export class CarsController {
     {
         return this.carsService.remove(+id);
     }
+    @Get('incomplete')
+    findIncomplete()
+    {
+        this.carsService.findIncomplete();
+    }
 }
 
 

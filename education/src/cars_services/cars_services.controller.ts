@@ -35,5 +35,10 @@ export class Cars_servicesController
     {
         return this.cars_servicesService.remove(+id);
     }
+    @Get('incomplete')
+    findIncomplete()
+    {
+        this.cars_servicesService.findIncomplete();
+    }
 
 }
