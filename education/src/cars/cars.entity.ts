@@ -13,7 +13,7 @@ export class Cars{
     @JoinTable({
         name: 'cars_carsservices',
         joinColumn: {name: 'car_id'},
-        inverseJoinColumn: {name: 'carsService_id'},
+        inverseJoinColumn: {name: 'car_service_id'},
     })
     car_services: Cars_services[];
 }

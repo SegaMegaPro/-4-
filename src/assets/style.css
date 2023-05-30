@@ -7,12 +7,12 @@
 @font-face
 {
     font-family: FontForTitles;
-    src: url("Fonts/MultiroundPro.otf");
+    src: url("@/assets/Fonts/MultiroundPro.otf");
 }
 @font-face
 {
     font-family: RegularFont;
-    src: url("Fonts/Font.ttf");
+    src: url("@/assets/Fonts/Font.ttf");
 }
 ::-webkit-scrollbar
 {
@@ -24,12 +24,14 @@
 #MainWrapper
 {
     overflow: hidden;
+    min-width: 500px;
 }
 #Decoration1
 {
     fill: #34374C;
     position: absolute;
     height:10vh;
+    min-width: inherit;
     top: 0;
     left:0;
 }
@@ -38,6 +40,7 @@
     fill: #34374C;
     position: absolute;
     height:10vh;
+    min-width: inherit;
     top: 0;
     right: 0;
 }
@@ -48,6 +51,7 @@
     color: #FFFFFF;
     font-size: 2vw;
     width:100vw;
+    min-width: 500px;
     height:8vh;
     padding-top: 0.5%;
     box-sizing: border-box;
@@ -62,6 +66,7 @@
     font-family: RegularFont, serif;
     font-size: 1vw;
     width: 100vw;
+    min-width: 800px;
     height:6vh;
     padding: 0.5%;
     box-sizing: border-box;
@@ -78,6 +83,7 @@
     width: 10%;
     text-align: center;
     box-sizing: border-box;
+    user-select: none;
 }
 .NavigationLinks:link, .NavigationLinks:visited, .NavigationLinks:active
 {
@@ -86,12 +92,6 @@
 .NavigationLinks:hover
 {
     color: #EE2B47;
-}
-.NavigationLinks:nth-child(1), .NavigationLinks:nth-child(1):hover
-{
-    color:white;
-    background-color: #EE2B47;
-    opacity: 80%;
 }
 #MainContent
 {
@@ -220,34 +220,6 @@
 }
 /*Главная*/
 /*Услуги*/
-.NavigationLinks1
-{
-    z-index: 20;
-    position: relative;
-    border-radius: 0.4vw;
-    color: #FFFFFF;
-    top: -12.5%;
-    height: 125%;
-    padding:0.3%;
-    width: 10%;
-    text-align: center;
-    box-sizing: border-box;
-}
-.NavigationLinks1:link, .NavigationLinks1:visited, .NavigationLinks1:active
-{
-    text-decoration: none;
-}
-.NavigationLinks1:hover
-{
-    color: #EE2B47;
-}
-.NavigationLinks1:nth-child(2), .NavigationLinks1:nth-child(2):hover
-{
-    color:white;
-    background-color: #EE2B47;
-    opacity: 80%;
-}
-
 #MainContentServices
 {
     background-color: #474E68;
@@ -284,34 +256,6 @@
 }
 /*Услуги*/
 /*Магазин запчастей*/
-.NavigationLinks2
-{
-    z-index: 20;
-    position: relative;
-    border-radius: 0.4vw;
-    color: #FFFFFF;
-    top: -12.5%;
-    height: 125%;
-    padding:0.3%;
-    width: 10%;
-    text-align: center;
-    box-sizing: border-box;
-}
-.NavigationLinks2:link, .NavigationLinks2:visited, .NavigationLinks2:active
-{
-    text-decoration: none;
-}
-.NavigationLinks2:hover
-{
-    color: #EE2B47;
-}
-.NavigationLinks2:nth-child(3), .NavigationLinks2:nth-child(3):hover
-{
-    color:white;
-    background-color: #EE2B47;
-    opacity: 80%;
-}
-
 #MainContentSpares
 {
     background-color: #474E68;
@@ -365,33 +309,6 @@
 }
 /*Магазин запчастей*/
 /*Цены*/
-.NavigationLinks3
-{
-    z-index: 20;
-    position: relative;
-    border-radius: 0.4vw;
-    color: #FFFFFF;
-    top: -12.5%;
-    height: 125%;
-    padding:0.3%;
-    width: 10%;
-    text-align: center;
-    box-sizing: border-box;
-}
-.NavigationLinks3:link, .NavigationLinks3:visited, .NavigationLinks3:active
-{
-    text-decoration: none;
-}
-.NavigationLinks3:hover
-{
-    color: #EE2B47;
-}
-.NavigationLinks3:nth-child(4), .NavigationLinks3:nth-child(4):hover
-{
-    color:white;
-    background-color: #EE2B47;
-    opacity: 80%;
-}
 #GreetingsPrice
 {
     background-color: #6B728E;
@@ -453,34 +370,6 @@
 }
 /*Цены*/
 /*О нас*/
-.NavigationLinks4
-{
-    z-index: 20;
-    position: relative;
-    border-radius: 0.4vw;
-    color: #FFFFFF;
-    top: -12.5%;
-    height: 125%;
-    padding:0.3%;
-    width: 10%;
-    text-align: center;
-    box-sizing: border-box;
-}
-.NavigationLinks4:link, .NavigationLinks4:visited, .NavigationLinks4:active
-{
-    text-decoration: none;
-}
-.NavigationLinks4:hover
-{
-    color: #EE2B47;
-}
-.NavigationLinks4:nth-child(5), .NavigationLinks4:nth-child(5):hover
-{
-    color:white;
-    background-color: #EE2B47;
-    opacity: 80%;
-}
-
 #MainContentAbout
 {
     background-color: #474E68;
@@ -529,33 +418,6 @@
 
 /*О нас*/
 /*Контакты*/
-.NavigationLinks5
-{
-    z-index: 20;
-    position: relative;
-    border-radius: 0.4vw;
-    color: #FFFFFF;
-    top: -12.5%;
-    height: 125%;
-    padding:0.3%;
-    width: 10%;
-    text-align: center;
-    box-sizing: border-box;
-}
-.NavigationLinks5:link, .NavigationLinks5:visited, .NavigationLinks5:active
-{
-    text-decoration: none;
-}
-.NavigationLinks5:hover
-{
-    color: #EE2B47;
-}
-.NavigationLinks5:nth-child(6), .NavigationLinks5:nth-child(6):hover
-{
-    color:white;
-    background-color: #EE2B47;
-    opacity: 80%;
-}
 #MainContentContacts
 {
     background-color: #474E68;
@@ -591,6 +453,3 @@
     width: 100%;
     height: 100%;
 }
-
-
-

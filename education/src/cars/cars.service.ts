@@ -35,7 +35,7 @@ export class CarsService
     async findAll() : Promise<Cars[]>
     {
         const cars = await this.carRepository.find({
-
+          /*relations: {car_services: true}*/
         })
         return cars;
     }
