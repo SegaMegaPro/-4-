@@ -1,8 +1,10 @@
-# 
+# Для клиентской части проекта:
 
 ## Project setup
 ```
-npm install
+npm install -g @vue/cli
+vue upgrade --next
+npm install vue-router@latest
 ```
 
 ### Compiles and hot-reloads for development
@@ -15,10 +17,11 @@ npm run serve
 npm run build
 ```
 
-### Lints and fixes files
+# Для серверной части проекта:
+### 1) Нужно перейти в папку education и запустить локальный сервер на Nest.js:
 ```
-npm run lint
+cd ./education
+npm run start
 ```
-
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
