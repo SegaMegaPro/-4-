@@ -15,7 +15,6 @@ export class WorkersService
     async create(workerDto: CreateWorkerDto): Promise<Workers>
     {
         const worker = this.workerRepository.create();
-        worker.id = workerDto.id;
         worker.fullname = workerDto.fullname;
         worker.position = workerDto.position;
         worker.phone = workerDto.phone;

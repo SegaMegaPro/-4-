@@ -20,7 +20,6 @@ export class Cars_servicesService
     async create(car_serviceDto: CreateCarServiceDto): Promise<Cars_services>
     {
         const carService = this.carServiceRepository.create();
-        carService.id = car_serviceDto.id;
         carService.servicename = car_serviceDto.servicename;
         carService.price = car_serviceDto.price;
         await this.carServiceRepository.save(carService);

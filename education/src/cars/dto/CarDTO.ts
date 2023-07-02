@@ -1,8 +1,8 @@
 import {IsNotEmpty, IsString} from 'class-validator'
+import {UsePipes, ValidationPipe} from "@nestjs/common";
+@UsePipes(new ValidationPipe({ transform: true }))
 export class CreateCarDto
 {
-    @IsNotEmpty()
-    id: number;
     @IsNotEmpty()
     @IsString()
     carname: string;

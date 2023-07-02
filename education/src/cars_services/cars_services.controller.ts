@@ -2,6 +2,7 @@ import {CarsService} from "../cars/cars.service";
 import {Body, Controller, Delete, Get, Param, Post, Put} from "@nestjs/common";
 import {Cars_services} from "./cars_services.entity";
 import {Cars_servicesService} from "./cars_services.service";
+import {CreateCarServiceDto} from "./dto/CarServiceDTO";
 
 @Controller("car_services")
 export class Cars_servicesController
@@ -26,7 +27,7 @@ export class Cars_servicesController
         return this.cars_servicesService.update(+id, updateCars_services);
     }
     @Post()
-    create(@Body() createCars_services: Cars_services)
+    create(@Body() createCars_services: CreateCarServiceDto)
     {
         return this.cars_servicesService.create(createCars_services);
     }

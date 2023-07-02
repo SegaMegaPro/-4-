@@ -1,30 +1,26 @@
 import { createApp } from 'vue'
 import App from '@/App.vue'
-import TheHeader from './components/TheHeader.vue'
-import TheNavigation from './components/TheNavigation.vue'
-import HomeLayout from './components/HomeLayout.vue'
-import ServicesLayout from './components/ServicesLayout.vue'
-import SparesStoreLayout from './components/SparesStoreLayout.vue'
-import PriceListLayout from './components/PriceListLayout.vue'
-import AboutLayout from './components/AboutLayout.vue'
-import ContactsLayout from './components/ContactsLayout.vue'
-import TheFooter from './components/TheFooter.vue'
-import TOLayout from './components/TOLayout.vue'
-import '@/assets/style.css'
+import { createRouter, createWebHistory } from 'vue-router'
+import ExtraHeader from '@/components/ExtraHeader.vue'
+import TheHeader from '@/components/TheHeader.vue'
+import TheMain from '@/components/TheMain.vue'
+import TheSpares from '@/components/TheSpares.vue'
 import '@/assets/Fonts/Font.ttf'
 import '@/assets/Fonts/MultiroundPro.otf'
 
 const app = createApp(App)
+const router = createRouter({
+  history: createWebHistory(),
+  routes: [
+    { path: '/extraheader', component: ExtraHeader },
+    { path: '/mainheader', component: TheHeader },
+    { path: '/themain', component: TheMain }
+  ]
+})
 
+app.use(router)
+app.component('extra-header', ExtraHeader)
 app.component('the-header', TheHeader)
-app.component('the-navigation', TheNavigation)
-app.component('home-layout', HomeLayout)
-app.component('services-layout', ServicesLayout)
-app.component('spares-store-layout', SparesStoreLayout)
-app.component('price-list-layout', PriceListLayout)
-app.component('about-layout', AboutLayout)
-app.component('contacts-layout', ContactsLayout)
-app.component('the-footer', TheFooter)
-app.component('TO-layout', TOLayout)
-
+app.component('the-main', TheMain)
+app.component('the-spares', TheSpares)
 app.mount('#app')

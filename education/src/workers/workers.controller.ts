@@ -1,6 +1,7 @@
 import {WorkersService} from "./workers.service";
 import {Body, Controller, Delete, Get, Param, Post, Put} from "@nestjs/common";
 import {Workers} from "./workers.entity";
+import {CreateWorkerDto} from "./dto/WorkerDTO";
 
 @Controller ("workers")
 export class WorkersController
@@ -24,7 +25,7 @@ export class WorkersController
         return this.workersService.update(+id, updateWorker);
     }
     @Post()
-    create(@Body() createWorker: Workers)
+    create(@Body() createWorker: CreateWorkerDto)
     {
         return this.workersService.create(createWorker);
     }

@@ -1,6 +1,8 @@
 <template>
+  <extra-header></extra-header>
   <the-header></the-header>
-  <the-navigation></the-navigation>
+  <the-main></the-main>
+  <the-spares></the-spares>
 </template>
 
 <script lang="js">
@@ -11,5 +13,16 @@ export default {
 </script>
 
 <style lang="css">
-
+html{
+  scroll-behavior: smooth;
+}
+body{
+  margin: 0;
+  padding: 0;
+  font-family: "Montserrat Medium",serif;
+}
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
 </style>
