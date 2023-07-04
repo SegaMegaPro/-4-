@@ -71,11 +71,11 @@ export default {
   background-image: url("/src/assets/Images/MainContentBack.png");
   width: 100%;
   min-width: 1536px;
-  height: 100vh;
+  height: calc(100vh - 130px);
   min-height: 750px;
   background-position: center;
   background-size: cover;
-  padding: 104px 125px 104px 79px;
+  padding: 104px 125px 104px 125px;
   box-sizing: border-box;
 }
 .MainContent{
@@ -83,6 +83,7 @@ export default {
   align-items: center;
   height: 100%;
   min-height: 550px;
+  justify-content: space-around;
   border-radius: 10px;
   background: rgba(217, 217, 217, 0.50);
   padding: 17px 163px 19px 164px;
@@ -92,9 +93,9 @@ export default {
 .MainContentTitle{
   text-align: center;
   color: #FFF;
-  width: 550px;
+  width: 80vw;
   height: 70px;
-  font-size: 38px;
+  font-size: calc(12px + 2vw);
   font-family: Montserrat,serif;
   font-style: normal;
   font-weight: 700;
@@ -106,7 +107,8 @@ export default {
 .MainContentInfo{
   color: #FFF;
   text-align: center;
-  font-size: 28px;
+  width: 80vw;
+  font-size: calc(12px + 1vw);
   font-family: Montserrat,serif;
   font-style: normal;
   font-weight: 400;

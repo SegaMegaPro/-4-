@@ -32,11 +32,10 @@
           <a href="#" class="DropdownLinks">Выездная диагностика</a>
         </div>
         <a class="NavigationLinks" href="#" @click="setActiveLink('spares'), scrollToBlock('Spares')">Комплектующие</a>
-        <a class="NavigationLinks" href="#" @click="setActiveLink('contacts')">Контакты</a>
+        <a class="NavigationLinks" href="#" @click="setActiveLink('contacts'), scrollToBlock('Contacts')">Контакты</a>
       </div>
     </div>
   </div>
-  <div v-if="activeLink === 'contacts'">Контакты</div>
 </template>
 
 <script>
@@ -60,9 +59,10 @@ export default {
     },
     scrollToBlock (blockID) {
       const block = document.getElementById(blockID)
+      const blockOffset = block.offsetTop
       if (block) {
         window.scrollTo({
-          top: block.offsetTop,
+          top: (blockOffset - 70),
           behavior: 'smooth'
         })
       }
@@ -193,22 +193,27 @@ export default {
 }
 .Dropdown {
   position: absolute;
+  overflow: scroll;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: space-around;
   align-items: center;
   flex-wrap: nowrap;
-  width: 230px;
+  width: 15vw;
+  min-width: 230px;
   background: rgba(0, 0, 0, 0.75);
-  height: 700px;
+  height: 500px;
   top: 100%;
-  left: 50%;
+  margin: 0 125px;
   color: #FFF;
-  font-size: 14px;
+  font-size: calc(8px + 0.5vw);
   font-family: Montserrat,serif;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
+}
+.Dropdown ::-webkit-scrollbar{
+  width: 10px;
 }
 .NavigationLinks:hover + .Dropdown, .Dropdown:hover {
   display: block;
@@ -219,8 +224,9 @@ export default {
   padding: 5px 0 1px 2px;
   box-sizing: border-box;
   text-align: left;
-  height: 35px;
-  width: 230px;
+  height: 55px;
+  width: 15vw;
+  min-width: 230px;
 }
 .DropdownLinks:link, .DropdownLinks:visited{
   text-decoration: none;

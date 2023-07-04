@@ -3,6 +3,7 @@
   <the-header></the-header>
   <the-main></the-main>
   <the-spares></the-spares>
+  <the-contacts></the-contacts>
 </template>
 
 <script lang="js">
