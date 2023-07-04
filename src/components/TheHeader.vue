@@ -59,13 +59,9 @@ export default {
     },
     scrollToBlock (blockID) {
       const block = document.getElementById(blockID)
-      const blockOffset = block.offsetTop
-      if (block) {
-        window.scrollTo({
-          top: (blockOffset - 70),
-          behavior: 'smooth'
-        })
-      }
+      this.$scrollTo(block, 0, {
+        easing: 'ease-in-out'
+      })
     }
   }
 }

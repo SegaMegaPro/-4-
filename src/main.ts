@@ -8,6 +8,7 @@ import TheSpares from '@/components/TheSpares.vue'
 import TheContacts from '@/components/TheContacts.vue'
 import '@/assets/Fonts/Font.ttf'
 import '@/assets/Fonts/MultiroundPro.otf'
+import VueScrollTo from 'vue-scrollto'
 
 const app = createApp(App)
 const router = createRouter({
@@ -20,6 +21,7 @@ const router = createRouter({
 })
 
 app.use(router)
+app.use(VueScrollTo)
 app.component('extra-header', ExtraHeader)
 app.component('the-header', TheHeader)
 app.component('the-main', TheMain)
