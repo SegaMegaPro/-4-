@@ -1,4 +1,5 @@
 <template>
+  <the-form v-if="formVisibility"></the-form>
   <div class="ContactsWrapper" id="Contacts">
     <div class="ContactsMainContent">
       <div class="ContactsContentInfo">
@@ -43,12 +44,23 @@
         <iframe src="https://yandex.ru/map-widget/v1/?ll=37.619973%2C55.748430&mode=poi&poi%5Bpoint%5D=37.618879%2C55.751426&poi%5Buri%5D=ymapsbm1%3A%2F%2Forg%3Foid%3D1023322799&z=15.75" width="560" height="500" frameborder="1" allowfullscreen="true" style="position:relative;"></iframe>
       </div>
     </div>
+    <button class="ContactsButton" @click="ShowForm">Остались вопросы?</button>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'TheContacts'
+  name: 'TheContacts',
+  data () {
+    return {
+      formVisibility: false
+    }
+  },
+  methods: {
+    ShowForm () {
+      this.formVisibility = true
+    }
+  }
 }
 </script>
 
@@ -61,11 +73,10 @@ export default {
   min-height: 750px;
   background-position: center;
   background-size: cover;
-  padding: 104px 125px 104px 125px;
+  padding: 50px 125px 130px 125px;
   box-sizing: border-box;
 }
 .ContactsMainContent{
-  border: 1px solid red;
   display: flex;
   align-items: center;
   border-radius: 10px;
@@ -86,17 +97,16 @@ export default {
   margin-left: 75px;
 }
 .ContactsContentInfo{
-  border: 1px solid red;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
   position: relative;
-  width: 30vw;
+  width: 35vw;
   min-width: 600px;
   height: 60vh;
   min-height: 500px;
-  margin: 40px auto 40px 50px;
+  margin: 40px auto 40px 0px;
 }
 .ContactsPhone{
   display: flex;
@@ -189,16 +199,32 @@ export default {
   min-width: 500px;
 }
 .ContactsMap{
+  position: relative;
   border-radius: 10px;
+  width: 40vw;
+  min-width: 500px;
   overflow:hidden;
   margin-left: 30px;
 }
 .ContactsMap iframe{
   position: relative;
   border-radius: 10px;
-  width: 30vw;
+  width: 40vw;
   min-width: 560px;
   height: 60vh;
   min-height: 500px;
+}
+.ContactsButton{
+  width: 100%;
+  height: 100px;
+  margin-top: 15px;
+  border-radius: 10px;
+  color: #FFFFFF;
+  background: rgba(129, 163, 182, 0.7);
+  box-shadow: 0 50px 40px 0 rgba(236, 236, 236, 0.25) inset, 4px 0 10px 0 rgba(0, 0, 0, 0.25), 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+  font-size: calc(14px + 1vw);
+}
+.Blur{
+  opacity: 0.5;
 }
 </style>

@@ -1,0 +1,255 @@
+<template>
+  <div class="FormWrapper">
+    <div class="FormContent">
+      <div class="FormTitleAndBackWrapper">
+        <p class="FormTitle">Остались вопросы?</p>
+        <button class="FormBack"></button>
+      </div>
+      <form>
+        <div class="FormNameAndPhoneWrapper">
+          <p class="FormNameTitle">Ваше имя:</p>
+          <input class="FormNameInput" placeholder="Введите имя..." v-model="name" @input="nameValidation" required>
+          <p class="FormPhoneTitle">Ваш номер телефона:</p>
+          <input class="FormPhoneInput" placeholder="Введите номер телефона..." v-model="phone" @input="phoneValidation" ref="phoneInput" required>
+        </div>
+        <div class="FormMessageWrapper">
+          <p class="FormMessageTitle">Ваше сообщение:</p>
+          <textarea class="FormMessageInput" placeholder="Ваше сообщение..." v-model="message" @input="limitChars" required></textarea>
+          <p class="FormCharsNotifier">Осталось символов: {{ charsRemained }}</p>
+          <button class="FormSend" @click="sendForm" :disabled="!isPhoneValid">Отправить</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'TheForm',
+  data () {
+    return {
+      phone: '',
+      name: '',
+      message: '',
+      maxChars: 300,
+      isPhoneValid: false
+    }
+  },
+  computed: {
+    charsRemained () {
+      return this.maxChars - this.message.length
+    }
+  },
+  methods: {
+    phoneValidation () {
+      const input = this.$refs.phoneInput
+      function mask (event) {
+        let keyCode
+        event.keyCode && (keyCode = event.keyCode)
+        const pos = this.selectionStart
+        if (pos < 3) event.preventDefault()
+        const matrix = '+7 (___) -___-__-__'
+        let i = 0
+        const def = matrix.replace(/\D/g, '')
+        const val = input.value.replace(/\D/g, '')
+        let newValue = matrix.replace(/[_\d]/g, function (a) {
+          return i < val.length ? val.charAt(i++) || def.charAt(i) : a
+        })
+        i = newValue.indexOf('_')
+        if (i !== -1) {
+          if (i < 5) i = 3
+          newValue = newValue.slice(0, i)
+        }
+        let reg = matrix
+          .substr(0, this.value.length)
+          .replace(/_+/g, function (a) {
+            return '\\d{1,' + a.length + '}'
+          })
+          .replace(/[+()]/g, '\\$&')
+        reg = new RegExp('^' + reg + '$')
+        if (!reg.test(this.value) || this.value.length < 5 || (keyCode > 47 && keyCode < 58)) {
+          input.value = newValue
+        }
+        if (event.type === 'blur' && this.value.length < 5) {
+          this.value = ''
+        }
+        if (input.value.length === matrix.length) {
+          input.style.borderColor = 'green'
+        } else {
+          input.style.borderColor = 'red'
+        }
+      }
+      input.addEventListener('input', mask.bind(input), false)
+      input.addEventListener('focus', mask.bind(input), false)
+      input.addEventListener('blur', mask.bind(input), false)
+      input.addEventListener('keydown', mask.bind(input), false)
+      this.updateButtonState()
+    },
+    attachPhoneMask () {
+      const input = this.$refs.phoneInput
+      input.addEventListener('input', this.phoneValidation, false)
+      input.addEventListener('focus', this.phoneValidation, false)
+      input.addEventListener('blur', this.phoneValidation, false)
+      input.addEventListener('keydown', this.phoneValidation, false)
+    },
+    limitChars () {
+      if (this.message.length > this.maxChars) {
+        this.message = this.message.substring(0, this.maxChars)
+      }
+    },
+    updateButtonState () {
+      const phoneInput = this.$refs.phoneInput
+      if (phoneInput.style.borderColor === 'green') {
+        this.isPhoneValid = true
+      } else {
+        this.isPhoneValid = false
+      }
+    },
+    nameValidation () {
+      const nameInput = document.querySelector('.FormNameInput')
+      const nameRegex = /^[a-zA-Zа-яА-Я]{0,20}$/
+      if (!nameRegex.test(this.name)) {
+        nameInput.style.borderColor = 'red'
+      } else {
+        nameInput.style.borderColor = 'green'
+      }
+    },
+    sendForm () {
+      console.log('test')
+    }
+  },
+  mounted () {
+    this.attachPhoneMask()
+    this.updateButtonState()
+  }
+}
+</script>
+
+<style scoped>
+.FormWrapper{
+  position: absolute;
+  z-index: 20;
+  width: 100%;
+  min-width: 1536px;
+  height: calc(100vh - 70px);
+  min-height: 750px;
+  padding: 104px 125px 104px 125px;
+  box-sizing: border-box;
+  background-color: rgba(0, 0, 0, 0.75);
+}
+.FormContent{
+  display: flex;
+  align-items: center;
+  height: 100%;
+  min-height: 550px;
+  border-radius: 10px;
+  background: #FFFFFF;
+  padding: 20px 60px 20px 60px;
+  box-sizing: border-box;
+  flex-direction: column;
+}
+form{
+  width: 100%;
+  font-size: calc(6px + 1vw);
+}
+input, textarea{
+  color: black;
+  font-size: calc(2px + 1vw);
+}
+.FormTitleAndBackWrapper{
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  font-size: calc(14px + 1vw);
+  font-weight: 700;
+}
+.FormBack{
+  border: 2px solid black;
+  background-color: #FF7F7F;
+  color: #FFFFFF;
+  font-size: calc(24px + 1vw);
+  font-weight: 700;
+  width: 5vw;
+  min-width: 50px;
+  height: 5vw;
+  min-height: 50px;
+  border-radius: 100%;
+  box-shadow: 0px 10px 40px 0px rgba(255, 128, 128, 0.25) inset, 0px 4px 4px 0px rgba(0, 0, 0, 0.25), 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+.FormNameAndPhoneWrapper{
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+  height: 100px;
+  width: 100%;
+}
+.FormNameTitle{
+  margin-right: 15px;
+  width: 13%;
+  max-width: 390px;
+}
+.FormNameInput{
+  margin-right: 45px;
+  min-width: 360px;
+  width: 20%;
+  min-height: 47px;
+  height: 30%;
+  border-radius: 5px;
+  border: 1px solid #000;
+  background: rgba(226, 226, 226, 0.13);
+  padding: 2px 10px;
+  box-sizing: border-box;
+}
+.FormPhoneTitle{
+  margin-right: 15px;
+  width: 27%;
+  max-width: 800px;
+}
+.FormPhoneInput{
+  min-width: 360px;
+  width: 20%;
+  min-height: 47px;
+  height: 30%;
+  border-radius: 5px;
+  border: 1px solid #000;
+  background: rgba(226, 226, 226, 0.13);
+  padding: 2px 10px;
+  box-sizing: border-box;
+}
+.FormMessageWrapper{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+.FormMessageInput{
+  width: 100%;
+  height: 120%;
+  padding: 2px 10px;
+  box-sizing: border-box;
+  resize: none;
+}
+.FormCharsNotifier{
+  opacity: 0.5;
+  margin-top: -2.5%;
+}
+.FormSend{
+  width: 100%;
+  height: 80%;
+  border-radius: 5px;
+  border: 1px solid #000;
+  background: rgba(0, 157, 255, 0.70);
+  box-shadow: 0px 50px 40px 0px rgba(236, 236, 236, 0.25) inset, 4px 0px 10px 0px rgba(0, 0, 0, 0.25), 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  margin-top: 40px;
+  color: #FFF;
+  font-size: calc(8px + 1vw);
+  font-family: Montserrat,serif;
+  font-weight: 700;
+  line-height: normal;
+}
+.FormSend:hover{
+  transition: 0.4s;
+  color: #5cfd8e;
+}
+</style>
