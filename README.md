@@ -5,6 +5,7 @@
 npm install -g @vue/cli
 vue upgrade --next
 npm install vue-router@latest
+npm install vuex
 ```
 
 ### Compiles and hot-reloads for development
