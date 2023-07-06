@@ -3,18 +3,18 @@
     <div class="FormContent">
       <div class="FormTitleAndBackWrapper">
         <p class="FormTitle">Остались вопросы?</p>
-        <button class="FormBack"></button>
+        <button class="FormBack" @click="showForm"></button>
       </div>
       <form>
         <div class="FormNameAndPhoneWrapper">
           <p class="FormNameTitle">Ваше имя:</p>
-          <input class="FormNameInput" placeholder="Введите имя..." v-model="name" @input="nameValidation" required>
+          <input class="FormNameInput" id="formName" placeholder="Введите имя..." v-model="name" @input="nameValidation" required>
           <p class="FormPhoneTitle">Ваш номер телефона:</p>
-          <input class="FormPhoneInput" placeholder="Введите номер телефона..." v-model="phone" @input="phoneValidation" ref="phoneInput" required>
+          <input class="FormPhoneInput" id="formPhone" placeholder="Введите номер телефона..." v-model="phone" @input="phoneValidation" ref="phoneInput" required>
         </div>
         <div class="FormMessageWrapper">
           <p class="FormMessageTitle">Ваше сообщение:</p>
-          <textarea class="FormMessageInput" placeholder="Ваше сообщение..." v-model="message" @input="limitChars" required></textarea>
+          <textarea class="FormMessageInput" id="formMessage" placeholder="Ваше сообщение..." v-model="message" @input="limitChars" required></textarea>
           <p class="FormCharsNotifier">Осталось символов: {{ charsRemained }}</p>
           <button class="FormSend" @click="sendForm" :disabled="!isPhoneValid">Отправить</button>
         </div>
@@ -24,6 +24,8 @@
 </template>
 
 <script>
+import { mapMutations, mapState } from 'vuex'
+
 export default {
   name: 'TheForm',
   data () {
@@ -36,11 +38,13 @@ export default {
     }
   },
   computed: {
+    ...mapState(['formState']),
     charsRemained () {
       return this.maxChars - this.message.length
     }
   },
   methods: {
+    ...mapMutations(['setFormVisibility', 'setPhoneData', 'setNameData', 'setMessageData']),
     phoneValidation () {
       const input = this.$refs.phoneInput
       function mask (event) {
@@ -115,7 +119,12 @@ export default {
       }
     },
     sendForm () {
-      console.log('test')
+      this.setNameData(this.name)
+      this.setPhoneData(this.phone)
+      this.setMessageData(this.message)
+    },
+    showForm () {
+      this.setFormVisibility(false)
     }
   },
   mounted () {
@@ -127,11 +136,12 @@ export default {
 
 <style scoped>
 .FormWrapper{
-  position: absolute;
+  position: sticky;
+  top: 0;
+  height: 200vh;
   z-index: 20;
   width: 100%;
   min-width: 1536px;
-  height: calc(100vh - 70px);
   min-height: 750px;
   padding: 104px 125px 104px 125px;
   box-sizing: border-box;
@@ -140,7 +150,7 @@ export default {
 .FormContent{
   display: flex;
   align-items: center;
-  height: 100%;
+  height: calc(650px + 4vw);
   min-height: 550px;
   border-radius: 10px;
   background: #FFFFFF;
@@ -225,7 +235,7 @@ input, textarea{
 }
 .FormMessageInput{
   width: 100%;
-  height: 120%;
+  height: 200px;
   padding: 2px 10px;
   box-sizing: border-box;
   resize: none;
@@ -236,7 +246,7 @@ input, textarea{
 }
 .FormSend{
   width: 100%;
-  height: 80%;
+  height: 100px;
   border-radius: 5px;
   border: 1px solid #000;
   background: rgba(0, 157, 255, 0.70);

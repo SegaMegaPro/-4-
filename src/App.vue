@@ -4,6 +4,7 @@
   <the-main></the-main>
   <the-spares></the-spares>
   <the-contacts></the-contacts>
+  <form-data></form-data>
 </template>
 
 <script lang="js">
