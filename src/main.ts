@@ -9,6 +9,7 @@ import TheSpares from '@/components/TheSpares.vue'
 import TheContacts from '@/components/TheContacts.vue'
 import TheForm from '@/components/TheForm.vue'
 import FormData from '@/components/FormData.vue'
+import SparesItem from '@/components/SparesItem.vue'
 import '@/assets/Fonts/Font.ttf'
 import '@/assets/Fonts/MultiroundPro.otf'
 import VueScrollTo from 'vue-scrollto'
@@ -21,12 +22,16 @@ const router = createRouter({
     { path: '/mainheader', component: TheHeader },
     { path: '/themain', component: TheMain },
     { path: '/form', component: TheForm },
-    { path: '/formData', component: FormData }
+    { path: '/formData', component: FormData },
+    { path: '/item', component: SparesItem}
   ]
 })
 
 const store = createStore({
   state: {
+    headerState: {
+      activeItem: Number(0)
+    },
     formState: {
       formVisibility: false,
       phone: '',
@@ -46,6 +51,9 @@ const store = createStore({
     },
     setMessageData (state, data) {
       state.formState.message = data
+    },
+    setActiveItem (state, data) {
+      state.headerState.activeItem = data
     }
   }
 })
@@ -60,4 +68,5 @@ app.component('the-spares', TheSpares)
 app.component('the-contacts', TheContacts)
 app.component('the-form', TheForm)
 app.component('form-data', FormData)
+app.component('spares-item', SparesItem)
 app.mount('#app')

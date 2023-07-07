@@ -1,4 +1,5 @@
 <template>
+  <router-view></router-view>
   <extra-header></extra-header>
   <the-header></the-header>
   <the-main></the-main>
