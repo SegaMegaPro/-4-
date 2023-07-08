@@ -71,7 +71,7 @@ export default {
   background-image: url("/src/assets/Images/MainContentBack.png");
   width: 100%;
   min-width: 1536px;
-  height: calc(100vh - 130px);
+  height: 740px;
   min-height: 750px;
   background-position: center;
   background-size: cover;
@@ -81,21 +81,23 @@ export default {
 .MainContent{
   display: flex;
   align-items: center;
+  width: 1285px;
   height: 100%;
   min-height: 550px;
+  margin: 0 auto 0 auto;
   justify-content: space-around;
   border-radius: 10px;
   background: rgba(217, 217, 217, 0.50);
-  padding: 17px 163px 19px 164px;
+  padding: 19px 163px 19px 163px;
   box-sizing: border-box;
   flex-direction: column;
 }
 .MainContentTitle{
   text-align: center;
   color: #FFF;
-  width: 80vw;
+  width: 750px;
   height: 70px;
-  font-size: calc(12px + 2vw);
+  font-size: 48px;
   font-family: Montserrat,serif;
   font-style: normal;
   font-weight: 700;
@@ -107,8 +109,8 @@ export default {
 .MainContentInfo{
   color: #FFF;
   text-align: center;
-  width: 80vw;
-  font-size: calc(12px + 1vw);
+  width: 1000px;
+  font-size: 28px;
   font-family: Montserrat,serif;
   font-style: normal;
   font-weight: 400;

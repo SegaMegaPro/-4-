@@ -138,52 +138,49 @@ export default {
 .FormWrapper{
   position: sticky;
   top: 0;
-  height: 200vh;
-  z-index: 20;
   width: 100%;
-  min-width: 1536px;
-  min-height: 750px;
+  height: 800px;
+  z-index: 20;
   padding: 104px 125px 104px 125px;
   box-sizing: border-box;
-  background-color: rgba(0, 0, 0, 0.75);
+  background-color: black;
 }
 .FormContent{
+  border: 1px solid red;
   display: flex;
   align-items: center;
-  height: calc(650px + 4vw);
-  min-height: 550px;
+  width: 1300px;
+  height: 675px;
   border-radius: 10px;
   background: #FFFFFF;
+  margin: 0 auto 0 auto;
   padding: 20px 60px 20px 60px;
   box-sizing: border-box;
   flex-direction: column;
 }
 form{
   width: 100%;
-  font-size: calc(6px + 1vw);
+  font-size: 20px;
 }
 input, textarea{
   color: black;
-  font-size: calc(2px + 1vw);
+  font-size: 20px;
 }
 .FormTitleAndBackWrapper{
   display: flex;
   width: 100%;
   justify-content: space-between;
   align-items: center;
-  font-size: calc(14px + 1vw);
+  font-size: 30px;
   font-weight: 700;
 }
 .FormBack{
   border: 2px solid black;
   background-color: #FF7F7F;
   color: #FFFFFF;
-  font-size: calc(24px + 1vw);
   font-weight: 700;
-  width: 5vw;
-  min-width: 50px;
-  height: 5vw;
-  min-height: 50px;
+  width: 50px;
+  height: 50px;
   border-radius: 100%;
   box-shadow: 0px 10px 40px 0px rgba(255, 128, 128, 0.25) inset, 0px 4px 4px 0px rgba(0, 0, 0, 0.25), 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
@@ -196,15 +193,13 @@ input, textarea{
 }
 .FormNameTitle{
   margin-right: 15px;
-  width: 13%;
+  width: 150px;
   max-width: 390px;
 }
 .FormNameInput{
   margin-right: 45px;
-  min-width: 360px;
-  width: 20%;
-  min-height: 47px;
-  height: 30%;
+  width: 360px;
+  height: 47px;
   border-radius: 5px;
   border: 1px solid #000;
   background: rgba(226, 226, 226, 0.13);
@@ -213,14 +208,11 @@ input, textarea{
 }
 .FormPhoneTitle{
   margin-right: 15px;
-  width: 27%;
-  max-width: 800px;
+  width: 290px;
 }
 .FormPhoneInput{
-  min-width: 360px;
-  width: 20%;
-  min-height: 47px;
-  height: 30%;
+  width: 360px;
+  height: 47px;
   border-radius: 5px;
   border: 1px solid #000;
   background: rgba(226, 226, 226, 0.13);
@@ -253,7 +245,7 @@ input, textarea{
   box-shadow: 0px 50px 40px 0px rgba(236, 236, 236, 0.25) inset, 4px 0px 10px 0px rgba(0, 0, 0, 0.25), 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   margin-top: 40px;
   color: #FFF;
-  font-size: calc(8px + 1vw);
+  font-size: 30px;
   font-family: Montserrat,serif;
   font-weight: 700;
   line-height: normal;

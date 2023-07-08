@@ -35,18 +35,19 @@ export default {
 .SparesWrapper{
   width: 100%;
   min-width: 1536px;
-  min-height: 750px;
-  height: calc(100vh - 70px);
-  background-image: url("/src/assets/Images/SparesBackground.png");
+  height: 740px;
   background-position: center;
   background-size: cover;
-  padding: 104px 125px 124px 125px;
   box-sizing: border-box;
+  background-image: url("/src/assets/Images/SparesBackground.png");
+  padding: 104px 125px 124px 125px;
 }
 .SparesMainContent{
-  border-radius: 10px;
+  width: 1285px;
   height: 100%;
   min-height: 550px;
+  margin: 0 auto 0 auto;
+  border-radius: 10px;
   background: rgba(217, 217, 217, 0.50);
   display: flex;
   justify-content: space-around;
@@ -56,7 +57,7 @@ export default {
   flex-direction: column;
   color: #FFFFFF;
   text-align: center;
-  font-size: calc(10px + 0.5vw);
+  font-size: 16px;
   font-family: Montserrat,serif;
   font-style: normal;
   font-weight: 500;
@@ -65,7 +66,7 @@ export default {
 .SparesContentSparesList{
   display: flex;
   flex-direction: column;
-  font-size: calc(8px + 0.5vw);
+  font-size: 14px;
 }
 .SparesListItem{
   margin-bottom: 1px;

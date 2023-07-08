@@ -67,27 +67,27 @@ export default {
 
 <style scoped>
 .ContactsWrapper{
-  background-image: url("/src/assets/Images/MainContentBack.png");
   width: 100%;
   min-width: 1536px;
-  height: calc(100vh - 70px);
-  min-height: 750px;
+  background-image: url("/src/assets/Images/MainContentBack.png");
+  height: 800px;
   background-position: center;
   background-size: cover;
-  padding: 50px 125px 130px 125px;
+  padding: 44px 125px 144px 125px;
   box-sizing: border-box;
 }
 .ContactsMainContent{
+  width: 1285px;
+  height: 100%;
+  margin: 0 auto 0 auto;
   display: flex;
   align-items: center;
   border-radius: 10px;
   background: rgba(217, 217, 217, 0.50);
   padding: 5px 48px 5px 48px;
-  height: 100%;
-  min-height: 550px;
   color: #FFFFFF;
   text-align: center;
-  font-size: calc(8px + 1vw);
+  font-size: 22px;
   font-family: Montserrat,serif;
   font-style: normal;
   font-weight: 500;
@@ -103,11 +103,9 @@ export default {
   justify-content: space-around;
   align-items: center;
   position: relative;
-  width: 35vw;
-  min-width: 600px;
-  height: 60vh;
-  min-height: 500px;
-  margin: 40px auto 40px 0px;
+  width: 600px;
+  height: 500px;
+  margin: 40px auto 40px auto;
 }
 .ContactsPhone{
   display: flex;
@@ -115,7 +113,7 @@ export default {
   height: 53px;
   padding: 10px 10px;
   margin-bottom: 30px;
-  font-size: calc(10px + 0.5vw);
+  font-size: 20px;
 }
 .ContactsPhoneLogo{
   position: relative;
@@ -177,7 +175,7 @@ export default {
 }
 .ContactsAddress p{
   width: 415px;
-  font-size: calc(8px + 0.5vw);
+  font-size: 18px;
   position: relative;
   right: 30px;
   height: 50px;
@@ -202,28 +200,27 @@ export default {
 .ContactsMap{
   position: relative;
   border-radius: 10px;
-  width: 40vw;
-  min-width: 500px;
+  width: 500px;
   overflow:hidden;
   margin-left: 30px;
 }
 .ContactsMap iframe{
   position: relative;
   border-radius: 10px;
-  width: 40vw;
-  min-width: 560px;
-  height: 60vh;
-  min-height: 500px;
+  width: 560px;
+  height: 500px;
 }
 .ContactsButton{
-  width: 100%;
+  display: block;
+  border: 1px solid red;
+  width: 1285px;
   height: 100px;
-  margin-top: 15px;
+  margin: 15px auto 0 auto;
   border-radius: 10px;
   color: #FFFFFF;
   background: rgba(129, 163, 182, 0.7);
   box-shadow: 0 50px 40px 0 rgba(236, 236, 236, 0.25) inset, 4px 0 10px 0 rgba(0, 0, 0, 0.25), 0 4px 4px 0 rgba(0, 0, 0, 0.25);
-  font-size: calc(14px + 1vw);
+  font-size: 30px;
 }
 .Blur{
   opacity: 0.5;

@@ -213,7 +213,7 @@ export default {
   top: 100%;
   margin: 0 125px;
   color: #FFF;
-  font-size: calc(8px + 0.5vw);
+  font-size: 16px;
   font-family: Montserrat,serif;
   font-style: normal;
   font-weight: 700;
@@ -232,8 +232,7 @@ export default {
   box-sizing: border-box;
   text-align: left;
   height: 55px;
-  width: 15vw;
-  min-width: 230px;
+  width: 298px;
 }
 .DropdownLinks:link, .DropdownLinks:visited{
   text-decoration: none;
