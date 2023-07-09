@@ -183,6 +183,7 @@ input, textarea{
   height: 50px;
   border-radius: 100%;
   box-shadow: 0px 10px 40px 0px rgba(255, 128, 128, 0.25) inset, 0px 4px 4px 0px rgba(0, 0, 0, 0.25), 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
 }
 .FormNameAndPhoneWrapper{
   justify-content: space-between;
@@ -249,6 +250,7 @@ input, textarea{
   font-family: Montserrat,serif;
   font-weight: 700;
   line-height: normal;
+  cursor: pointer;
 }
 .FormSend:hover{
   transition: 0.4s;

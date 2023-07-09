@@ -8,6 +8,7 @@ import TheMain from '@/components/TheMain.vue'
 import TheSpares from '@/components/TheSpares.vue'
 import TheContacts from '@/components/TheContacts.vue'
 import TheForm from '@/components/TheForm.vue'
+import TheFooter from '@/components/TheFooter.vue'
 import FormData from '@/components/FormData.vue'
 import SparesItem from '@/components/SparesItem.vue'
 import '@/assets/Fonts/Font.ttf'
@@ -25,10 +26,17 @@ const router = createRouter({
         mainHeader: TheHeader,
         theMain: TheMain,
         theSpares: TheSpares,
-        theContacts: TheContacts
+        theContacts: TheContacts,
+        theFooter: TheFooter
       }
     },
-    { path: '/item', component: SparesItem }
+    {
+      path: '/item',
+      components: {
+        sparesItem: SparesItem,
+        theFooterSparesItem: TheFooter
+      }
+    }
   ]
 })
 
@@ -71,6 +79,7 @@ app.component('the-header', TheHeader)
 app.component('the-main', TheMain)
 app.component('the-spares', TheSpares)
 app.component('the-contacts', TheContacts)
+app.component('the-footer', TheFooter)
 app.component('the-form', TheForm)
 app.component('form-data', FormData)
 app.component('spares-item', SparesItem)
