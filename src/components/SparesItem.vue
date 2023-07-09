@@ -103,7 +103,6 @@ export default {
 
 <style scoped>
 .SparesItemWrapper{
-  border: 1px solid red;
   display: flex;
   flex-direction: column;
   background-image: url("/src/assets/Images/MainContentBack.png");
@@ -141,6 +140,9 @@ export default {
 }
 .SparesItemTable th{
   border: 1px solid white;
+  position: sticky;
+  top: 0;
+  background-color: #444243;
   border-collapse: collapse;
   height: 70px;
 }
