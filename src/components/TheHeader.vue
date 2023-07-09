@@ -61,6 +61,7 @@ export default {
     setActiveItem (item) {
       this.activeItem = item
       this.headerState.activeItem = this.activeItem
+      this.$router.push('/item')
     },
     showDropdown () {
       this.isDropdownVisible = true
@@ -213,7 +214,7 @@ export default {
   top: 100%;
   margin: 0 125px;
   color: #FFF;
-  font-size: 16px;
+  font-size: 14px;
   font-family: Montserrat,serif;
   font-style: normal;
   font-weight: 700;

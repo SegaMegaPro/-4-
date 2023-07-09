@@ -72,7 +72,6 @@ export default {
   width: 100%;
   min-width: 1536px;
   height: 740px;
-  min-height: 750px;
   background-position: center;
   background-size: cover;
   padding: 104px 125px 104px 125px;

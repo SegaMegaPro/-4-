@@ -18,12 +18,17 @@ const app = createApp(App)
 const router = createRouter({
   history: createWebHistory(),
   routes: [
-    { path: '/', component: ExtraHeader },
-    { path: '/mainheader', component: TheHeader },
-    { path: '/themain', component: TheMain },
-    { path: '/form', component: TheForm },
-    { path: '/formData', component: FormData },
-    { path: '/item', component: SparesItem}
+    {
+      path: '/main',
+      components: {
+        extraHeader: ExtraHeader,
+        mainHeader: TheHeader,
+        theMain: TheMain,
+        theSpares: TheSpares,
+        theContacts: TheContacts
+      }
+    },
+    { path: '/item', component: SparesItem }
   ]
 })
 

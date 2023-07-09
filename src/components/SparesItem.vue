@@ -1,9 +1,9 @@
 <template>
   <div class="SparesItemWrapper">
+    <p class="SparesItemTitle">{{ getTitle }}</p>
     <div class="SparesItemMainContentWrapper">
-      <p>{{ getTitle }}</p>
       <div class="SparesItemMainContent">
-        <table>
+        <table class="SparesItemTable">
           <thead>
           <tr>
             <th>ID</th>
@@ -26,9 +26,15 @@
 
 <script>
 import { mapState } from 'vuex'
+import axios from 'axios'
 
 export default {
   name: 'SparesItem',
+  data () {
+    return {
+      services: []
+    }
+  },
   computed: {
     ...mapState(['headerState']),
     getTitle () {
@@ -77,10 +83,69 @@ export default {
           return 'Заголовок по умолчанию'
       }
     }
+  },
+  methods: {
+    fetchServices () {
+      axios.get('http://localhost:3000/car_services')
+        .then(response => {
+          this.services = response.data
+        })
+        .catch(error => {
+          console.error(error)
+        })
+    }
+  },
+  mounted () {
+    this.fetchServices()
   }
 }
 </script>
 
 <style scoped>
-
+.SparesItemWrapper{
+  border: 1px solid red;
+  display: flex;
+  flex-direction: column;
+  background-image: url("/src/assets/Images/MainContentBack.png");
+  min-width: 1536px;
+  width: 100%;
+  height: 100%;
+  min-height: 1500px;
+  background-position: center;
+  background-size: cover;
+  padding: 50px 100px 50px 100px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  font-size: 20px;
+}
+.SparesItemMainContentWrapper{
+  display: flex;
+  align-items: center;
+  width: 1285px;
+  height: 100%;
+  min-height: 750px;
+  margin: 0 auto 0 auto;
+  border-radius: 10px;
+  background: rgba(217, 217, 217, 0.50);
+  padding: 20px;
+  box-sizing: border-box;
+  flex-direction: column;
+}
+.SparesItemTitle{
+  font-size: 36px;
+  margin: 0 auto 20px auto;
+}
+.SparesItemTable{
+  width: 1200px;
+  text-align: center;
+}
+.SparesItemTable th{
+  border: 1px solid white;
+  border-collapse: collapse;
+  height: 70px;
+}
+.SparesItemTable td{
+  border: 1px solid #FFFFFF;
+  height: 50px;
+}
 </style>

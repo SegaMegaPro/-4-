@@ -1,16 +1,21 @@
 <template>
-  <extra-header></extra-header>
-  <the-header></the-header>
-  <the-main></the-main>
-  <the-spares></the-spares>
-  <the-contacts></the-contacts>
-  <form-data></form-data>
+  <router-view></router-view>
+  <router-view name="extraHeader"></router-view>
+  <router-view name="mainHeader"></router-view>
+  <router-view name="theMain"></router-view>
+  <router-view name="theSpares"></router-view>
+  <router-view name="theContacts"></router-view>
 </template>
 
 <script lang="js">
+import { mapState } from 'vuex'
+
 export default {
   name: 'App',
-  components: {}
+  components: {},
+  computed: {
+    ...mapState(['headerState'])
+  }
 }
 </script>
 

@@ -212,7 +212,6 @@ export default {
 }
 .ContactsButton{
   display: block;
-  border: 1px solid red;
   width: 1285px;
   height: 100px;
   margin: 15px auto 0 auto;
