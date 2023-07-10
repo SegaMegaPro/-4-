@@ -26,3 +26,10 @@ npm run start
 ```
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+### Предпросмотр проекта:
+
+https://github.com/SegaMegaPro/-4-/assets/110731178/f41fd72a-55da-46e4-a96f-31a32195a807
+
+
+
