@@ -12,14 +12,9 @@ npm install vuex
 npm install vue-scrollto
 ```
 
-### Compiles and hot-reloads for development
+### Для запуска клиентской части проекта
 ```
 npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
 ```
 
 # Для серверной части проекта:
