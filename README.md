@@ -3,7 +3,7 @@
 Тема проекта - сайт для автомастерской с привязкой к базе данных, с возможностью вывода данных из БД, занесения в нее новых данных, удаления, обновления.
 # Для клиентской части проекта:
 
-## Project setup
+## Для клиентской части проекта
 ```
 npm install -g @vue/cli
 vue upgrade --next
@@ -23,7 +23,13 @@ npm run build
 ```
 
 # Для серверной части проекта:
-### 1) Нужно перейти в папку education и запустить локальный сервер на Nest.js:
+### 1) Установить пакеты:
+```
+npm -G install @nestjs/cli
+npm install @nestjs/typeorm @nestjs/swagger typeorm nestjs-form-data dotenv cross-env swagger-ui-express tsconfig-paths pg pg-hstore rimraf
+npm install ts-node ts-loader @nestjs/config
+```
+### 2) Нужно перейти в папку education и запустить локальный сервер на Nest.js:
 ```
 cd ./education
 npm run start
